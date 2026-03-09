@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TBtech — Automazione Industriale</title>
+  <meta name="description" content="TBtech: automazione industriale su misura. Software IEC 61131, progettazione CEI 64-8, consulenza, collaudo e messa in servizio." />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet (mappa) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header" data-elevate>
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="TBtech Home">
+        <img src="logo.png" alt="TBtech Logo" class="brand-logo" />
+      </a>
+
+      <nav class="nav" aria-label="Navigazione principale">
+        <a class="nav-link" href="#home" data-nav>Home</a>
+        <a class="nav-link" href="#chi-siamo" data-nav>Chi siamo</a>
+        <a class="nav-link" href="#servizi" data-nav>Servizi</a>
+        <a class="nav-link" href="#progetti" data-nav>Progetti</a>
+        <a class="nav-link" href="#contatti" data-nav>Contatti</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-ghost" href="#contatti">Parliamone</a>
+        <a class="btn btn-primary" href="#servizi">Scopri i servizi</a>
+      </div>
+
+      <button class="icon-btn burger" type="button" aria-label="Apri menu" aria-expanded="false" data-burger>
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="mobile-drawer" data-drawer>
+      <div class="container mobile-drawer-inner">
+        <a class="nav-link" href="#home" data-nav>Home</a>
+        <a class="nav-link" href="#chi-siamo" data-nav>Chi siamo</a>
+        <a class="nav-link" href="#servizi" data-nav>Servizi</a>
+        <a class="nav-link" href="#progetti" data-nav>Progetti</a>
+        <a class="nav-link" href="#contatti" data-nav>Contatti</a>
+        <div class="mobile-cta">
+          <a class="btn btn-primary" href="#contatti">Contattaci</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- HERO (stile agency/tech, art a destra) -->
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="kicker">Automazione industriale · Siderurgico · Soluzioni su misura</p>
+
+          <h1 class="hero-title">
+            Automatizziamo il futuro,<br />
+            ottimizziamo il presente.
+          </h1>
+
+          <p class="hero-lead">
+            TBtech è il partner affidabile per l’automazione industriale. Sviluppiamo soluzioni su misura per aziende che
+            vogliono innovare, crescere e rendere i propri processi più efficienti.
+          </p>
+
+          <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="#contatti">Richiedi una consulenza</a>
+            <a class="btn btn-ghost btn-lg" href="#progetti">Vedi progetti</a>
+          </div>
+
+          <div class="mini-proof">
+            <div class="mini-proof-item">
+              <div class="mini-proof-top">IEC 61131</div>
+              <div class="mini-proof-sub">Software PLC</div>
+            </div>
+            <div class="mini-proof-item">
+              <div class="mini-proof-top">CEI 64-8</div>
+              <div class="mini-proof-sub">Progettazione</div>
+            </div>
+            <div class="mini-proof-item">
+              <div class="mini-proof-top">Direttiva Macchine</div>
+              <div class="mini-proof-sub">Collaudo</div>
+            </div>
+          </div>
+
+          <div class="callout reveal">
+            <p class="muted">
+              Utilizziamo tecnologie <strong>Beckhoff</strong>, <strong>Siemens</strong> e altri brand leader per garantire
+              efficienza e stabilità.
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-art-wrap reveal">
+  <div class="hero-art-glow" aria-hidden="true"></div>
+  <img class="hero-art" src="filoit.png" alt="Automazione: robot e circuiti" />
+</div>
+
+      <div class="container hero-divider" aria-hidden="true"></div>
+    </section>
+
+    <!-- Chi siamo -->
+    <section id="chi-siamo" class="section">
+      <div class="container section-head reveal">
+        <div>
+          <h2 class="section-title">Chi siamo</h2>
+          <p class="section-sub">Tecnologia, esperienza, passione</p>
+        </div>
+      </div>
+
+      <div class="container split">
+        <div class="card card--soft reveal">
+          <h3>TBtech</h3>
+          <p class="muted">
+            TBtech nasce dall’incontro tra competenza tecnica e passione per l’innovazione. Siamo specializzati
+            nell’automazione industriale, con un focus particolare sul settore siderurgico.
+          </p>
+          <p class="muted">
+            Collaboriamo con i migliori, come <strong>Beckhoff</strong> e <strong>Siemens</strong>, per offrire ai nostri clienti
+            soluzioni sempre all’avanguardia e affidabili.
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <div class="card-media card-media--grid" aria-hidden="true"></div>
+          <div class="card-body">
+            <h3 class="card-title">Approccio end-to-end</h3>
+            <p class="card-text">
+              Analisi → progettazione → sviluppo → collaudo → messa in servizio, con attenzione a qualità, sicurezza e tempi certi.
+            </p>
+            <div class="chips">
+              <span class="chip">Affidabilità</span>
+              <span class="chip">Conformità</span>
+              <span class="chip">Performance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servizi -->
+    <section id="servizi" class="section">
+      <div class="container section-head reveal">
+        <div>
+          <h2 class="section-title">Servizi</h2>
+          <p class="section-sub">Soluzioni tecniche conformi, robuste e scalabili</p>
+        </div>
+      </div>
+
+      <div class="container grid">
+        <article class="service reveal">
+          <div class="service-icon" aria-hidden="true">PLC</div>
+          <h3>Software custom</h3>
+          <p class="muted"><strong>Compliant con la norma IEC 61131</strong></p>
+          <p class="muted">
+            Sviluppiamo software personalizzati per l’automazione industriale, seguendo le normative di riferimento e
+            garantendo affidabilità e sicurezza.
+          </p>
+        </article>
+
+        <article class="service reveal">
+          <div class="service-icon" aria-hidden="true">EL</div>
+          <h3>Progettazione elettrica</h3>
+          <p class="muted"><strong>Compliant con la norma CEI 64-8</strong></p>
+          <p class="muted">
+            Progettiamo sistemi elettrici conformi agli standard internazionali e alle normative di settore.
+          </p>
+        </article>
+
+        <article class="service reveal">
+          <div class="service-icon" aria-hidden="true">CONS</div>
+          <h3>Consulenza</h3>
+          <p class="muted">
+            Offriamo consulenza tecnica per aiutare le aziende a scegliere e implementare le migliori soluzioni
+            di automazione, sempre in linea con le normative vigenti.
+          </p>
+        </article>
+
+        <article class="service reveal">
+          <div class="service-icon" aria-hidden="true">QA</div>
+          <h3>Collaudo e messa in servizio</h3>
+          <p class="muted">
+            Seguiamo ogni fase dell’avviamento degli impianti, garantendo risultati concreti, tempi certi e piena
+            conformità alla Direttiva Macchine, offrendo service post collaudo.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Progetti -->
+    <section id="progetti" class="section">
+      <div class="container section-head reveal">
+        <div>
+          <h2 class="section-title">Progetti realizzati</h2>
+          <p class="section-sub">Presenza sul territorio e interventi presso impianti industriali</p>
+        </div>
+
+        <div class="section-actions">
+          <input class="input" type="search" placeholder="Cerca per location o keyword..." aria-label="Cerca progetti" data-project-search />
+          <button class="btn btn-ghost" type="button" data-reset>Reset</button>
+        </div>
+      </div>
+
+      <div class="container projects-layout">
+        <div class="map-card reveal">
+          <div class="map-head">
+            <h3 class="map-title">Mappa presenze</h3>
+            <p class="muted">Clicca un marker per vedere il progetto.</p>
+          </div>
+          <div id="map" class="map" role="application" aria-label="Mappa progetti"></div>
+        </div>
+
+        <div class="projects-card reveal">
+          <div class="projects-head">
+            <h3 class="projects-title">Elenco progetti</h3>
+            <p class="muted" data-project-count></p>
+          </div>
+
+          <div class="projects-grid" data-project-grid>
+            <!-- cards via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contatti -->
+    <section id="contatti" class="section">
+      <div class="container section-head reveal">
+        <div>
+          <h2 class="section-title">Contatti</h2>
+          <p class="section-sub">Parliamone!</p>
+        </div>
+      </div>
+
+      <div class="container split">
+        <div class="card reveal">
+          <h3>Vuoi ottimizzare i tuoi processi o hai bisogno di una consulenza?</h3>
+          <p class="muted">
+            Scrivici o chiamaci, saremo felici di ascoltare le tue esigenze.
+          </p>
+
+          <div class="contact-list">
+            <div class="contact-item">
+              <div class="contact-label">Email</div>
+              <a class="contact-value" href="mailto:info@tbtech.it">info@tbtech.it</a>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Telefono</div>
+              <a class="contact-value" href="tel:+390432000000">+39 0432</a>
+            </div>
+            <div class="contact-item">
+              <div class="contact-label">Sede</div>
+              <div class="contact-value">Udine, Italia</div>
+            </div>
+          </div>
+
+          <div class="note">
+            <p class="muted">Se vuoi, posso aggiungere un form che invia via API (o EmailJS) quando avrai un endpoint.</p>
+          </div>
+        </div>
+
+        <form class="card card--soft form reveal" data-contact-form>
+          <h3>Scrivici</h3>
+
+          <label class="field">
+            <span>Nome</span>
+            <input class="input input--full" name="name" required />
+          </label>
+
+          <label class="field">
+            <span>Email</span>
+            <input class="input input--full" type="email" name="email" required />
+          </label>
+
+          <label class="field">
+            <span>Messaggio</span>
+            <textarea class="input input--full" name="message" rows="5" required></textarea>
+          </label>
+
+          <button class="btn btn-primary" type="submit">Invia</button>
+          <p class="muted form-status" data-form-status aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-left">
+          <div class="brand brand--footer">
+            <span class="brand-mark" aria-hidden="true"></span>
+            <span class="brand-name">TBtech</span>
+          </div>
+          <p class="muted">© <span data-year></span> TBtech. Tutti i diritti riservati.</p>
+        </div>
+
+        <div class="footer-right">
+          <a class="footer-link" href="#home">Home</a>
+          <a class="footer-link" href="#servizi">Servizi</a>
+          <a class="footer-link" href="#contatti">Contatti</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <script src="app.js"></script>
+</body>
+</html>
