@@ -1,161 +1,198 @@
-/* ========= Helpers ========= */
-const $ = (sel, root = document) => root.querySelector(sel);
-const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+/* =========================================================
+   FUNZIONI DI SUPPORTO
+   ========================================================= */
+const cercaUno = (selettore, radice = document) => radice.querySelector(selettore);
+const cercaTutti = (selettore, radice = document) =>
+  Array.from(radice.querySelectorAll(selettore));
 
-/* ========= Year ========= */
-const yearEl = $("[data-year]");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-/* ========= Sticky header elevation ========= */
-const header = $("[data-elevate]");
-const onScrollElevate = () => {
-  if (!header) return;
-  if (window.scrollY > 6) header.classList.add("is-elevated");
-  else header.classList.remove("is-elevated");
-};
-window.addEventListener("scroll", onScrollElevate, { passive: true });
-onScrollElevate();
-
-/* ========= Mobile menu ========= */
-const burger = $("[data-burger]");
-const drawer = $("[data-drawer]");
-
-const closeDrawer = () => {
-  if (!drawer || !burger) return;
-  drawer.classList.remove("is-open");
-  burger.setAttribute("aria-expanded", "false");
-};
-
-if (burger && drawer) {
-  burger.addEventListener("click", () => {
-    const open = drawer.classList.toggle("is-open");
-    burger.setAttribute("aria-expanded", open ? "true" : "false");
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeDrawer();
-  });
+/* =========================================================
+   ANNO FOOTER
+   ========================================================= */
+const elementoAnno = cercaUno("[data-anno]");
+if (elementoAnno) {
+  elementoAnno.textContent = new Date().getFullYear();
 }
 
-/* ========= Smooth scroll + close drawer ========= */
-$$('a[href^="#"]').forEach(a => {
-  a.addEventListener("click", (e) => {
-    const href = a.getAttribute("href");
-    if (!href || href === "#") return;
+/* =========================================================
+   HEADER FISSO
+   ========================================================= */
+const testata = cercaUno("[data-testata]");
 
-    const target = document.querySelector(href);
-    if (!target) return;
+/* =========================================================
+   MENU MOBILE A TENDINA
+   ========================================================= */
+const bottoneMenu = cercaUno("[data-bottone-menu]");
+const menuMobile = cercaUno("[data-menu-mobile]");
 
-    e.preventDefault();
-    closeDrawer();
+function apriMenuMobile() {
+  if (!bottoneMenu || !menuMobile) return;
 
-    const headerOffset = header?.offsetHeight ?? 0;
-    const y = target.getBoundingClientRect().top + window.scrollY - headerOffset - 10;
+  menuMobile.classList.add("aperto");
+  bottoneMenu.classList.add("aperto");
 
-    window.scrollTo({ top: y, behavior: "smooth" });
+  bottoneMenu.setAttribute("aria-expanded", "true");
+  menuMobile.setAttribute("aria-hidden", "false");
+}
+
+function chiudiMenuMobile() {
+  if (!bottoneMenu || !menuMobile) return;
+
+  menuMobile.classList.remove("aperto");
+  bottoneMenu.classList.remove("aperto");
+
+  bottoneMenu.setAttribute("aria-expanded", "false");
+  menuMobile.setAttribute("aria-hidden", "true");
+}
+
+function menuMobileAperto() {
+  if (!menuMobile) return false;
+  return menuMobile.classList.contains("aperto");
+}
+
+function toggleMenuMobile() {
+  if (menuMobileAperto()) {
+    chiudiMenuMobile();
+  } else {
+    apriMenuMobile();
+  }
+}
+
+if (bottoneMenu) {
+  bottoneMenu.addEventListener("click", toggleMenuMobile);
+}
+
+document.addEventListener("keydown", (evento) => {
+  if (evento.key === "Escape" && menuMobileAperto()) {
+    chiudiMenuMobile();
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 720) {
+    chiudiMenuMobile();
+  }
+});
+
+cercaTutti('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", (evento) => {
+    const destinazione = link.getAttribute("href");
+    if (!destinazione || destinazione === "#") return;
+
+    const elementoDestinazione = cercaUno(destinazione);
+    if (!elementoDestinazione) return;
+
+    evento.preventDefault();
+    chiudiMenuMobile();
+
+    const altezzaTestata = testata ? testata.offsetHeight : 0;
+
+    const posizioneY =
+      elementoDestinazione.getBoundingClientRect().top +
+      window.scrollY -
+      altezzaTestata -
+      10;
+
+    impostaLinkAttivo(elementoDestinazione.id);
+
+    window.scrollTo({
+      top: Math.max(posizioneY, 0),
+      behavior: "smooth",
+    });
   });
 });
 
-/* ========= Active nav on scroll ========= */
-const navLinks = $$("[data-nav]");
-const sectionIds = ["#home", "#chi-siamo", "#servizi", "#progetti", "#contatti"];
-const sections = sectionIds.map(id => document.querySelector(id)).filter(Boolean);
+const tuttiLinkMenu = cercaTutti("[data-link-menu]");
+const idSezioni = ["home", "chi-siamo", "servizi", "progetti", "contatti"];
+const sezioniPagina = idSezioni
+  .map((id) => document.getElementById(id))
+  .filter(Boolean);
 
-const setActiveNav = (id) => {
-  navLinks.forEach(l => {
-    const isActive = l.getAttribute("href") === id;
-    l.classList.toggle("is-active", isActive);
+function impostaLinkAttivo(idSezione) {
+  const hash = `#${idSezione}`;
+
+  tuttiLinkMenu.forEach((link) => {
+    link.classList.toggle("attivo", link.getAttribute("href") === hash);
   });
-};
+}
 
-if (sections.length) {
-  const ioNav = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter(e => e.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+function aggiornaLinkAttivoDaScroll() {
+  const altezzaTestata = testata ? testata.offsetHeight : 0;
+  const puntoRiferimento = window.scrollY + altezzaTestata + 120;
 
-    if (visible?.target?.id) {
-      const hash = visible.target.id === "home" ? "#home" : `#${visible.target.id}`;
-      setActiveNav(hash);
+  let sezioneAttiva = "home";
+
+  sezioniPagina.forEach((sezione) => {
+    if (sezione.offsetTop <= puntoRiferimento) {
+      sezioneAttiva = sezione.id;
     }
-  }, { root: null, threshold: [0.15, 0.3, 0.45, 0.6] });
+  });
 
-  sections.forEach(s => ioNav.observe(s));
+  impostaLinkAttivo(sezioneAttiva);
+}
+const elementiDaMostrare = cercaTutti(".apparizione");
+
+if (elementiDaMostrare.length) {
+  const osservatoreApparizione = new IntersectionObserver(
+    (voci) => {
+      voci.forEach((voce) => {
+        if (voce.isIntersecting) {
+          voce.target.classList.add("visibile");
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+    }
+  );
+
+  elementiDaMostrare.forEach((elemento) =>
+    osservatoreApparizione.observe(elemento)
+  );
 }
 
-/* ========= Reveal on scroll ========= */
-const revealEls = $$(".reveal");
-if (revealEls.length) {
-  const ioReveal = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) e.target.classList.add("is-in");
-    });
-  }, { threshold: 0.12 });
-
-  revealEls.forEach(el => ioReveal.observe(el));
-}
-
-/* ========= Hero parallax (leggero) ========= */
-const heroParallax = $("[data-hero-parallax]");
-if (heroParallax) {
-  const onMove = (e) => {
-    const r = heroParallax.getBoundingClientRect();
-    const cx = r.left + r.width / 2;
-    const cy = r.top + r.height / 2;
-    const dx = (e.clientX - cx) / r.width;   // -0.5..0.5
-    const dy = (e.clientY - cy) / r.height;
-
-    heroParallax.style.transform = `translate3d(${dx * 10}px, ${dy * 10}px, 0)`;
-  };
-
-  window.addEventListener("mousemove", onMove, { passive: true });
-
-  window.addEventListener("scroll", () => {
-    const y = Math.min(window.scrollY, 400);
-    heroParallax.style.filter = `drop-shadow(0 28px 80px rgba(0,0,0,.55))`;
-    heroParallax.style.opacity = `${Math.max(0.85, 1 - y / 2600)}`;
-  }, { passive: true });
-}
-
-/* ========= Progetti data ========= */
-const PROJECTS = [
+/* =========================================================
+   DATI PROGETTI
+   ========================================================= */
+const PROGETTI = [
   {
-    id: "p1",
-    title: "Revamping linea automazione",
-    text: "Aggiornamento logiche PLC e ottimizzazione tempi ciclo su impianto industriale.",
-    location: "Udine, IT",
-    coords: [46.0620, 13.2346],
-    image: "https://images.unsplash.com/photo-1581091215367-59ab6b74ac46?auto=format&fit=crop&w=700&q=70",
-    tags: ["PLC", "HMI"]
+    id: "progetto-1",
+    titolo: "Revamping linea automazione",
+    testo: "Aggiornamento logiche PLC e ottimizzazione tempi ciclo su impianto industriale.",
+    luogo: "Udine, IT",
+    coordinate: [46.0620, 13.2346],
+    immagine: "https://images.unsplash.com/photo-1581091215367-59ab6b74ac46?auto=format&fit=crop&w=700&q=70",
+    tag: ["PLC", "HMI"]
   },
   {
-    id: "p2",
-    title: "Messa in servizio quadro e I/O remoti",
-    text: "Avviamento e collaudo con verifiche funzionali e conformità Direttiva Macchine.",
-    location: "Trieste, IT",
-    coords: [45.6495, 13.7768],
-    image: "https://images.unsplash.com/photo-1581092334494-1b1c2b6c7a90?auto=format&fit=crop&w=700&q=70",
-    tags: ["Collaudo", "Safety"]
+    id: "progetto-2",
+    titolo: "Messa in servizio quadro e I/O remoti",
+    testo: "Avviamento e collaudo con verifiche funzionali e conformità Direttiva Macchine.",
+    luogo: "Trieste, IT",
+    coordinate: [45.6495, 13.7768],
+    immagine: "https://images.unsplash.com/photo-1581092334494-1b1c2b6c7a90?auto=format&fit=crop&w=700&q=70",
+    tag: ["Collaudo", "Safety"]
   },
   {
-    id: "p3",
-    title: "Integrazione drives e diagnostica",
-    text: "Integrazione sistemi motion e diagnostica avanzata per riduzione downtime.",
-    location: "Verona, IT",
-    coords: [45.4384, 10.9916],
-    image: "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&w=700&q=70",
-    tags: ["Motion", "Diagnostica"]
+    id: "progetto-3",
+    titolo: "Integrazione drives e diagnostica",
+    testo: "Integrazione sistemi motion e diagnostica avanzata per riduzione downtime.",
+    luogo: "Verona, IT",
+    coordinate: [45.4384, 10.9916],
+    immagine: "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&w=700&q=70",
+    tag: ["Motion", "Diagnostica"]
   }
 ];
 
-/* ========= Render project cards ========= */
-const grid = $("[data-project-grid]");
-const countEl = $("[data-project-count]");
-const searchInput = $("[data-project-search]");
-const resetBtn = $("[data-reset]");
+/* =========================================================
+   ELEMENTI PROGETTI
+   ========================================================= */
+const contenitoreGrigliaProgetti = cercaUno("[data-griglia-progetti]");
+const elementoConteggioProgetti = cercaUno("[data-conteggio-progetti]");
+const inputRicercaProgetti = cercaUno("[data-cerca-progetti]");
+const bottoneResetProgetti = cercaUno("[data-reset-progetti]");
 
-function escapeHtml(str) {
-  return String(str)
+function pulisciHtml(testo) {
+  return String(testo)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -163,121 +200,191 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
-function projectCard(p) {
-  const tagHtml = (p.tags || []).slice(0, 2).map(t => `<span class="badge">${escapeHtml(t)}</span>`).join(" ");
+function creaSchedaProgetto(progetto) {
+  const htmlTag = (progetto.tag || [])
+    .slice(0, 2)
+    .map((etichetta) => `<span class="badge-progetto">${pulisciHtml(etichetta)}</span>`)
+    .join(" ");
+
   return `
-    <article class="project" data-project-id="${escapeHtml(p.id)}" tabindex="0" role="button" aria-label="Apri progetto ${escapeHtml(p.title)}">
-      <img class="project-img" src="${p.image}" alt="" loading="lazy" />
-      <div class="project-body">
-        <h4 class="project-title">${escapeHtml(p.title)}</h4>
-        <p class="project-text">${escapeHtml(p.text)}</p>
-        <div class="project-loc">
-          <span>${escapeHtml(p.location)}</span>
+    <article
+      class="scheda-progetto"
+      data-id-progetto="${pulisciHtml(progetto.id)}"
+      tabindex="0"
+      role="button"
+      aria-label="Apri progetto ${pulisciHtml(progetto.titolo)}"
+    >
+      <img
+        class="immagine-progetto"
+        src="${progetto.immagine}"
+        alt=""
+        loading="lazy"
+      />
+      <div class="corpo-progetto">
+        <h4 class="titolo-progetto">${pulisciHtml(progetto.titolo)}</h4>
+        <p class="testo-progetto">${pulisciHtml(progetto.testo)}</p>
+        <div class="info-progetto">
+          <span>${pulisciHtml(progetto.luogo)}</span>
           <span style="opacity:.8">·</span>
-          ${tagHtml}
+          ${htmlTag}
         </div>
       </div>
     </article>
   `;
 }
 
-let map, markersById = new Map();
+function renderizzaProgetti(lista) {
+  if (!contenitoreGrigliaProgetti || !elementoConteggioProgetti) return;
 
-function renderProjects(list) {
-  if (!grid || !countEl) return;
+  contenitoreGrigliaProgetti.innerHTML = lista.map(creaSchedaProgetto).join("");
+  elementoConteggioProgetti.textContent = `${lista.length} progetti`;
 
-  grid.innerHTML = list.map(projectCard).join("");
-  countEl.textContent = `${list.length} progetti`;
+  const schede = cercaTutti("[data-id-progetto]", contenitoreGrigliaProgetti);
 
-  $$("[data-project-id]", grid).forEach(card => {
-    card.addEventListener("click", () => focusProject(card.dataset.projectId));
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        focusProject(card.dataset.projectId);
+  schede.forEach((scheda) => {
+    scheda.addEventListener("click", () => {
+      evidenziaProgetto(scheda.dataset.idProgetto);
+    });
+
+    scheda.addEventListener("keydown", (evento) => {
+      if (evento.key === "Enter" || evento.key === " ") {
+        evento.preventDefault();
+        evidenziaProgetto(scheda.dataset.idProgetto);
       }
     });
   });
 }
 
-renderProjects(PROJECTS);
+renderizzaProgetti(PROGETTI);
 
-/* ========= Leaflet map ========= */
-function initMap() {
-  const mapEl = $("#map");
-  if (!mapEl || typeof L === "undefined") return;
+/* =========================================================
+   MAPPA
+   ========================================================= */
+let mappa;
+let markerPerId = new Map();
 
-  map = L.map("map", { scrollWheelZoom: false });
+function inizializzaMappa() {
+  const elementoMappa = cercaUno("#mappa-progetti");
+  if (!elementoMappa || typeof L === "undefined") return;
+
+  mappa = L.map("mappa-progetti", {
+    scrollWheelZoom: false,
+  });
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
-    attribution: "&copy; OpenStreetMap"
-  }).addTo(map);
+    attribution: "&copy; OpenStreetMap",
+  }).addTo(mappa);
 
-  const bounds = [];
+  const limiti = [];
 
-  PROJECTS.forEach(p => {
-    const marker = L.marker(p.coords).addTo(map);
-    marker.bindPopup(`<strong>${escapeHtml(p.title)}</strong><br>${escapeHtml(p.location)}`);
-    markersById.set(p.id, marker);
-    bounds.push(p.coords);
+  PROGETTI.forEach((progetto) => {
+    const marker = L.marker(progetto.coordinate).addTo(mappa);
+
+    marker.bindPopup(
+      `<strong>${pulisciHtml(progetto.titolo)}</strong><br>${pulisciHtml(progetto.luogo)}`
+    );
+
+    markerPerId.set(progetto.id, marker);
+    limiti.push(progetto.coordinate);
   });
 
-  if (bounds.length) map.fitBounds(bounds, { padding: [24, 24] });
-}
-initMap();
-
-function focusProject(id) {
-  const p = PROJECTS.find(x => x.id === id);
-  if (!p || !map) return;
-
-  const marker = markersById.get(id);
-  if (marker) {
-    map.setView(p.coords, Math.max(map.getZoom(), 10), { animate: true });
-    marker.openPopup();
-  }
-
-  if (grid) {
-    $$("[data-project-id]", grid).forEach(el => {
-      el.style.outline = (el.dataset.projectId === id) ? "2px solid rgba(47,107,255,.55)" : "none";
+  if (limiti.length) {
+    mappa.fitBounds(limiti, {
+      padding: [24, 24],
     });
   }
 }
 
-/* ========= Search filter ========= */
-function normalize(s) {
-  return String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+inizializzaMappa();
+
+function evidenziaProgetto(idProgetto) {
+  const progetto = PROGETTI.find((elemento) => elemento.id === idProgetto);
+  if (!progetto || !mappa) return;
+
+  const marker = markerPerId.get(idProgetto);
+
+  if (marker) {
+    mappa.setView(progetto.coordinate, Math.max(mappa.getZoom(), 10), {
+      animate: true,
+    });
+    marker.openPopup();
+  }
+
+  if (contenitoreGrigliaProgetti) {
+    cercaTutti("[data-id-progetto]", contenitoreGrigliaProgetti).forEach((scheda) => {
+      scheda.classList.toggle(
+        "evidenziato",
+        scheda.dataset.idProgetto === idProgetto
+      );
+    });
+  }
 }
 
-function applyFilter() {
-  if (!searchInput) return;
-  const q = normalize(searchInput.value.trim());
-  if (!q) return renderProjects(PROJECTS);
+/* =========================================================
+   FILTRO PROGETTI
+   ========================================================= */
+function normalizzaTesto(testo) {
+  return String(testo)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
 
-  const filtered = PROJECTS.filter(p => {
-    const hay = normalize([p.title, p.text, p.location, ...(p.tags || [])].join(" "));
-    return hay.includes(q);
+function applicaFiltroProgetti() {
+  if (!inputRicercaProgetti) return;
+
+  const query = normalizzaTesto(inputRicercaProgetti.value.trim());
+
+  if (!query) {
+    renderizzaProgetti(PROGETTI);
+    return;
+  }
+
+  const filtrati = PROGETTI.filter((progetto) => {
+    const testoCompleto = normalizzaTesto(
+      [
+        progetto.titolo,
+        progetto.testo,
+        progetto.luogo,
+        ...(progetto.tag || []),
+      ].join(" ")
+    );
+
+    return testoCompleto.includes(query);
   });
 
-  renderProjects(filtered);
+  renderizzaProgetti(filtrati);
 }
 
-if (searchInput) searchInput.addEventListener("input", applyFilter);
-if (resetBtn) resetBtn.addEventListener("click", () => {
-  if (!searchInput) return;
-  searchInput.value = "";
-  renderProjects(PROJECTS);
-});
+if (inputRicercaProgetti) {
+  inputRicercaProgetti.addEventListener("input", applicaFiltroProgetti);
+}
 
-/* ========= Contact form (demo) ========= */
-const form = $("[data-contact-form]");
-const statusEl = $("[data-form-status]");
+if (bottoneResetProgetti) {
+  bottoneResetProgetti.addEventListener("click", () => {
+    if (!inputRicercaProgetti) return;
 
-if (form && statusEl) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(form).entries());
-    statusEl.textContent = `Messaggio pronto: ${data.name} (${data.email}). Ti ricontatteremo a breve.`;
-    form.reset();
+    inputRicercaProgetti.value = "";
+    renderizzaProgetti(PROGETTI);
+  });
+}
+
+/* =========================================================
+   FORM DEMO
+   ========================================================= */
+const formContatti = cercaUno("[data-form-contatti]");
+const statoForm = cercaUno("[data-stato-form]");
+
+if (formContatti && statoForm) {
+  formContatti.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+
+    const dati = Object.fromEntries(new FormData(formContatti).entries());
+
+    statoForm.textContent =
+      `Messaggio pronto: ${dati.name} (${dati.email}). Ti ricontatteremo a breve.`;
+
+    formContatti.reset();
   });
 }
