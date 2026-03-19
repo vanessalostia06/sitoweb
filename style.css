@@ -504,7 +504,8 @@ strong{
 }
 
 .titolo-sezione{
-  margin: 0;
+  margin: 15px;
+  padding-left: 8px;
   font-size: 22px;
   letter-spacing: -.2px;
 }
@@ -698,6 +699,13 @@ strong{
   overflow: hidden;
 }
 
+.scheda-mappa,
+.scheda-progetti{
+  display: flex;
+  flex-direction: column;
+  min-height: 520px;
+}
+
 .testa-mappa,
 .testa-progetti{
   padding: 14px;
@@ -707,6 +715,7 @@ strong{
 
 .mappa{
   height: 420px;
+  flex: 1;
 }
 
 .griglia-progetti{
@@ -714,6 +723,12 @@ strong{
   display: grid;
   grid-template-columns: 1fr;
   gap: 12px;
+  flex: 1;
+  min-height: 0;
+  max-height: 420px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
 }
 
 .scheda-progetto{
@@ -785,6 +800,71 @@ strong{
   box-shadow: 0 0 0 1px rgba(47,107,255,.14), 0 18px 36px rgba(0,0,0,.22);
 }
 
+
+.griglia-progetti::-webkit-scrollbar{
+  width: 10px;
+}
+
+.griglia-progetti::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.03);
+}
+
+.griglia-progetti::-webkit-scrollbar-thumb{
+  background: rgba(47,107,255,.35);
+  border-radius: 999px;
+  border: 2px solid rgba(11,18,34,.55);
+}
+.griglia-progetti{
+  scrollbar-width: thin;
+  scrollbar-color: rgba(47,107,255,.6) rgba(255,255,255,.04);
+}
+
+.griglia-progetti::-webkit-scrollbar{
+  width: 8px;
+}
+
+.griglia-progetti::-webkit-scrollbar-track{
+  background: rgba(255,255,255,.03);
+  border-radius: 999px;
+}
+
+.griglia-progetti::-webkit-scrollbar-thumb{
+  background: linear-gradient(
+    180deg,
+    rgba(47,107,255,.7),
+    rgba(26,88,182,.8)
+  );
+  border-radius: 999px;
+  border: 2px solid rgba(11,18,34,.6);
+}
+
+.griglia-progetti::-webkit-scrollbar-thumb:hover{
+  background: linear-gradient(
+    180deg,
+    rgba(47,107,255,.9),
+    rgba(26,88,182,1)
+  );
+}
+.griglia-contatti{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.griglia-contatti > .scheda{
+  width: 100%;
+  min-width: 0;
+  padding: 22px;
+}
+
+@media (max-width: 720px){
+  .griglia-contatti{
+    grid-template-columns: 1fr;
+  }
+}
+
+
 /* =========================================================
    CONTATTI
    ========================================================= */
@@ -831,13 +911,20 @@ strong{
 }
 
 .form-contatti{
-  padding: 16px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.form-contatti h3{
+  margin: 0 0 18px;
 }
 
 .campo-form{
   display: grid;
   gap: 8px;
-  margin: 10px 0 12px;
+  margin: 0 0 18px;
 }
 
 .campo-form span{
@@ -910,6 +997,9 @@ textarea.campo-input{
 }
 
 @media (max-width: 980px){
+  .griglia-contatti{
+    grid-template-columns: 1fr;
+  }
   .hero{
     padding: 46px 0 22px;
   }
@@ -925,6 +1015,7 @@ textarea.campo-input{
   .griglia-due-colonne{
     grid-template-columns: 1fr;
   }
+
 
   .servizio{
     grid-column: span 6;
@@ -967,6 +1058,10 @@ textarea.campo-input{
 
   .interno-footer{
     flex-direction: column;
+  }
+
+  .griglia-contatti{
+    grid-template-columns: 1fr;
   }
 
   .scheda-progetto{

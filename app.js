@@ -156,30 +156,30 @@ if (elementiDaMostrare.length) {
 const PROGETTI = [
   {
     id: "progetto-1",
-    titolo: "Revamping linea automazione",
+    titolo: "Miglioramento della linea di automazione",
     testo: "Aggiornamento logiche PLC e ottimizzazione tempi ciclo su impianto industriale.",
-    luogo: "Udine, IT",
-    coordinate: [46.0620, 13.2346],
-    immagine: "https://images.unsplash.com/photo-1581091215367-59ab6b74ac46?auto=format&fit=crop&w=700&q=70",
+    luogo: "Udine, Via Paparotti 13",
+    coordinate: [46.0219, 13.2603],
+    immagine: "https://a.storyblok.com/f/40131/1200x627/2d343d4f8d/1_hmi_for_all_og.jpg/m/1200x0",
     tag: ["PLC", "HMI"]
   },
   {
     id: "progetto-2",
-    titolo: "Messa in servizio quadro e I/O remoti",
-    testo: "Avviamento e collaudo con verifiche funzionali e conformità Direttiva Macchine.",
+    titolo: "Installazione e verifica sistema di recinzione con filo spinato",
+    testo: "Progettazione, posa e collaudo di recinzioni perimetrali in filo spinato, con valutazione dei requisiti di sicurezza e conformità alle normative vigenti.",
     luogo: "Trieste, IT",
     coordinate: [45.6495, 13.7768],
-    immagine: "https://images.unsplash.com/photo-1581092334494-1b1c2b6c7a90?auto=format&fit=crop&w=700&q=70",
-    tag: ["Collaudo", "Safety"]
+    immagine: "https://th.bing.com/th/id/R.142c2f6ea81f2421b31f9d64c6fb7213?rik=xar2D%2fiwH%2fNrJg&pid=ImgRaw&r=0",
+    tag: ["Recinzioni", "Sicurezza"]
   },
   {
     id: "progetto-3",
-    titolo: "Integrazione drives e diagnostica",
-    testo: "Integrazione sistemi motion e diagnostica avanzata per riduzione downtime.",
-    luogo: "Verona, IT",
+    titolo: "Progettazione software per integrazione ai PLC",
+    testo: "Sviluppo e integrazione software su PLC per gestione I/O, protocolli di comunicazione e diagnostica avanzata dei sistemi.",
+    luogo: "Pordenone, IT",
     coordinate: [45.4384, 10.9916],
-    immagine: "https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&w=700&q=70",
-    tag: ["Motion", "Diagnostica"]
+    immagine: "https://tse3.mm.bing.net/th/id/OIP.reG8XJBigbYJaAutZ5T_XgHaFV?rs=1&pid=ImgDetMain&o=7&rm=3",
+    tag: ["PLC", "Integrazione", "Software"]
   }
 ];
 
@@ -262,6 +262,10 @@ renderizzaProgetti(PROGETTI);
    ========================================================= */
 let mappa;
 let markerPerId = new Map();
+const SEDE_TBTECH = {
+  nome: "Udine, Via Paparotti 13",
+  coordinate: [46.0219, 13.2603],
+};
 
 function inizializzaMappa() {
   const elementoMappa = cercaUno("#mappa-progetti");
@@ -276,7 +280,10 @@ function inizializzaMappa() {
     attribution: "&copy; OpenStreetMap",
   }).addTo(mappa);
 
-  const limiti = [];
+  const markerSede = L.marker(SEDE_TBTECH.coordinate).addTo(mappa);
+  markerSede.bindPopup(`<strong>Sede</strong><br>${pulisciHtml(SEDE_TBTECH.nome)}`);
+
+  const limiti = [SEDE_TBTECH.coordinate];
 
   PROGETTI.forEach((progetto) => {
     const marker = L.marker(progetto.coordinate).addTo(mappa);
@@ -290,8 +297,8 @@ function inizializzaMappa() {
   });
 
   if (limiti.length) {
-    mappa.fitBounds(limiti, {
-      padding: [24, 24],
+    mappa.setView(SEDE_TBTECH.coordinate, 12, {
+      animate: false,
     });
   }
 }

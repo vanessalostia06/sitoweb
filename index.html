@@ -136,7 +136,7 @@
 
           <div class="riquadro-evidenza apparizione">
             <p class="testo-secondario">
-              Utilizziamo tecnologie <strong>Beckhoff</strong>, <strong>Siemens</strong> e altri brand leader per garantire
+              Utilizziamo tecnologie <strong>Beckhoff</strong>, <strong>Siemens</strong> e altri brand leader di settore per garantire la massima
               efficienza e stabilità.
             </p>
           </div>
@@ -160,7 +160,7 @@
       <div class="contenitore testa-sezione apparizione">
         <div>
           <h2 class="titolo-sezione">Chi siamo</h2>
-          <p class="sottotitolo-sezione">Tecnologia, esperienza, passione</p>
+          <p class="sottotitolo-sezione"><strong>Tecnologia, esperienza, passione</strong></p>
         </div>
       </div>
 
@@ -169,12 +169,14 @@
           <h3>TBtech</h3>
           <p class="testo-secondario">
             TBtech nasce dall’incontro tra competenza tecnica e passione per l’innovazione. Siamo specializzati
-            nell’automazione industriale, con un focus particolare sul settore siderurgico.
+            nell’ <strong>automazione industriale</strong>, con un focus particolare sul settore <strong>siderurgico</strong>.
           </p>
+          <!--
           <p class="testo-secondario">
             Collaboriamo con i migliori, come <strong>Beckhoff</strong> e <strong>Siemens</strong>, per offrire ai nostri clienti
             soluzioni sempre all’avanguardia e affidabili.
           </p>
+          -->
         </div>
 
         <div class="scheda apparizione scheda-elevabile">
@@ -287,67 +289,65 @@
       </div>
     </section>
 
-    <!-- CONTATTI -->
-    <section id="contatti" class="sezione">
-      <div class="contenitore testa-sezione apparizione">
-        <div>
-          <h2 class="titolo-sezione">Contatti</h2>
-          <p class="sottotitolo-sezione">Parliamone!</p>
+<!-- CONTATTI -->
+<section id="contatti" class="sezione">
+  <div class="contenitore griglia-contatti">
+    <div class="scheda apparizione scheda-elevabile">
+      <h2 class="titolo-sezione">Contatti</h2>
+
+      <p class="testo-secondario">
+        Scrivici o chiamaci, saremo felici di ascoltare le tue esigenze.
+      </p>
+
+      <div class="lista-contatti">
+        <div class="elemento-contatto">
+          <div class="etichetta-contatto">Email</div>
+          <a class="valore-contatto" href="mailto:info@tbtech.it">info@tbtech.it</a>
+        </div>
+
+        <div class="elemento-contatto">
+          <div class="etichetta-contatto">Telefono</div>
+          <a class="valore-contatto" href="tel:+393930194938">+39 393 019 4938</a>
+        </div>
+
+        <div class="elemento-contatto">
+          <div class="etichetta-contatto">Sede</div>
+          <div class="valore-contatto">Udine, Italia</div>
         </div>
       </div>
 
-      <div class="contenitore griglia-due-colonne">
-        <div class="scheda apparizione scheda-elevabile">
-          <h3>Vuoi ottimizzare i tuoi processi o hai bisogno di una consulenza?</h3>
-          <p class="testo-secondario">
-            Scrivici o chiamaci, saremo felici di ascoltare le tue esigenze.
-          </p>
-
-          <div class="lista-contatti">
-            <div class="elemento-contatto">
-              <div class="etichetta-contatto">Email</div>
-              <a class="valore-contatto" href="mailto:info@tbtech.it">info@tbtech.it</a>
-            </div>
-            <div class="elemento-contatto">
-              <div class="etichetta-contatto">Telefono</div>
-              <a class="valore-contatto" href="tel:+390432000000">+39 0432</a>
-            </div>
-            <div class="elemento-contatto">
-              <div class="etichetta-contatto">Sede</div>
-              <div class="valore-contatto">Udine, Italia</div>
-            </div>
-          </div>
-
-          <div class="nota">
-            <p class="testo-secondario">
-              Se vuoi, posso aggiungere un form che invia via API (o EmailJS) quando avrai un endpoint.
-            </p>
-          </div>
-        </div>
-
-        <form class="scheda scheda-morbida form-contatti apparizione scheda-elevabile" data-form-contatti>
-          <h3>Scrivici</h3>
-
-          <label class="campo-form">
-            <span>Nome</span>
-            <input class="campo-input campo-pieno" name="name" required />
-          </label>
-
-          <label class="campo-form">
-            <span>Email</span>
-            <input class="campo-input campo-pieno" type="email" name="email" required />
-          </label>
-
-          <label class="campo-form">
-            <span>Messaggio</span>
-            <textarea class="campo-input campo-pieno" name="message" rows="5" required></textarea>
-          </label>
-
-          <button class="pulsante pulsante-primario" type="submit">Invia</button>
-          <p class="testo-secondario stato-form" data-stato-form aria-live="polite"></p>
-        </form>
+      <!--
+      <div class="nota">
+        <p class="testo-secondario">
+          Se vuoi, posso aggiungere un form che invia via API (o EmailJS) quando avrai un endpoint.
+        </p>
       </div>
-    </section>
+      -->
+    </div>
+
+    <form class="scheda scheda-morbida form-contatti apparizione scheda-elevabile" data-form-contatti>
+      <h3>Scrivici</h3>
+
+      <label class="campo-form">
+        <span>Nome</span>
+        <input class="campo-input campo-pieno" name="name" required />
+      </label>
+
+      <label class="campo-form">
+        <span>Email</span>
+        <input class="campo-input campo-pieno" type="email" name="email" required />
+      </label>
+
+      <label class="campo-form">
+        <span>Messaggio</span>
+        <textarea class="campo-input campo-pieno" name="message" rows="5" required></textarea>
+      </label>
+
+      <button class="pulsante pulsante-primario" type="submit">Invia</button>
+      <p class="testo-secondario stato-form" data-stato-form aria-live="polite"></p>
+    </form>
+  </div>
+</section>
 
     <!-- FOOTER -->
     <footer class="piè-di-pagina">
