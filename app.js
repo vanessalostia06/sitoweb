@@ -384,14 +384,7 @@ const formContatti = cercaUno("[data-form-contatti]");
 const statoForm = cercaUno("[data-stato-form]");
 
 if (formContatti && statoForm) {
-  formContatti.addEventListener("submit", (evento) => {
-    evento.preventDefault();
-
-    const dati = Object.fromEntries(new FormData(formContatti).entries());
-
-    statoForm.textContent =
-      `Messaggio pronto: ${dati.name} (${dati.email}). Ti ricontatteremo a breve.`;
-
-    formContatti.reset();
+  formContatti.addEventListener("submit", () => {
+    statoForm.textContent = "Invio in corso...";
   });
 }
