@@ -321,8 +321,24 @@
       -->
     </div>
 
-    <form method="POST" action="invioMail.php" class="scheda scheda-morbida form-contatti apparizione scheda-elevabile" data-form-contatti>
-      <h3>Scrivici</h3>
+  <form
+    name="contatti"
+    method="POST"
+    action="/grazie.html"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    class="scheda scheda-morbida form-contatti apparizione scheda-elevabile"
+    data-form-contatti
+  >
+    <input type="hidden" name="form-name" value="contatti" />
+
+    <p class="visually-hidden">
+      <label>
+        Non compilare questo campo:
+        <input name="bot-field" type="text" />
+      </label>
+    </p>
+  <h3>Scrivici</h3>
 
       <label class="campo-form">
         <span>Nome</span>
