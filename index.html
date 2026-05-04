@@ -2,48 +2,46 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>TBtech - Automazione Industriale</title>
+
   <meta
     name="description"
     content="TBtech: automazione industriale su misura. Software IEC 61131, progettazione CEI 64-8, consulenza, collaudo e messa in servizio."
   />
-  <meta name="google" />
 
+  <link rel="icon" type="image/png" href="miniLogo.png" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" type="image/png" href="miniLogo.png">
-
-  
-  <!-- Leaflet per la mappa -->
 </head>
 
 <body>
-  <!-- ======================================================
-       HEADER / BARRA ORIZZONTALE FISSA
-       ====================================================== -->
   <header class="testata-sito" data-testata>
     <div class="contenitore testata-interna">
-      <!-- Logo -->
       <a class="marchio" href="#home" aria-label="TBtech Home">
-        <img src="logo.png" alt="TBtech Logo" class="logo-marchio" />
+        <img class="logo-marchio" src="logo.png" alt="TBtech Logo" />
       </a>
 
-      <!-- Menu desktop -->
       <nav class="menu-principale" aria-label="Navigazione principale">
-        <a class="link-menu" href="#home" data-link-menu>Home</a>
-        <a class="link-menu" href="#chi-siamo" data-link-menu>Chi siamo</a>
-        <a class="link-menu" href="#servizi" data-link-menu>Servizi</a>
-        <a class="link-menu" href="#progetti" data-link-menu>Progetti</a>
-        <a class="link-menu" href="#contatti" data-link-menu>Contatti</a>
+        <a class="link-menu" href="#home" data-link-menu data-i18n="nav_home">Home</a>
+        <a class="link-menu" href="#chi-siamo" data-link-menu data-i18n="nav_about">Chi siamo</a>
+        <a class="link-menu" href="#servizi" data-link-menu data-i18n="nav_services">Servizi</a>
+        <a class="link-menu" href="#progetti" data-link-menu data-i18n="nav_projects">Progetti</a>
+        <a class="link-menu" href="#contatti" data-link-menu data-i18n="nav_contacts">Contatti</a>
       </nav>
 
-      <!-- Pulsanti desktop -->
+      <!--
       <div class="azioni-testata">
-        <a class="pulsante pulsante-secondario" href="#contatti">Parliamone</a>
-        <a class="pulsante pulsante-primario" href="#servizi">Scopri i servizi</a>
+        <a class="pulsante pulsante-secondario" href="#contatti" data-i18n="btn_talk">Parliamone</a>
+        <a class="pulsante pulsante-primario" href="#servizi" data-i18n="btn_services">Scopri i servizi</a>
+      </div>
+      -->
+      
+      <div class="selettore-lingua" aria-label="Selettore lingua">
+        <button class="bottone-lingua attivo" type="button" data-lingua="it">IT</button>
+        <button class="bottone-lingua" type="button" data-lingua="en">EN</button>
       </div>
 
-      <!-- Bottone menu mobile -->
       <button
         class="bottone-menu"
         type="button"
@@ -59,8 +57,8 @@
         </span>
       </button>
     </div>
+    
 
-    <!-- Menu mobile: tendina -->
     <div
       id="menu-mobile"
       class="menu-mobile-tendina"
@@ -69,73 +67,80 @@
     >
       <div class="contenitore contenuto-menu-mobile">
         <nav class="navigazione-mobile" aria-label="Navigazione mobile">
-          <a class="link-menu-mobile" href="#home" data-link-menu>Home</a>
-          <a class="link-menu-mobile" href="#chi-siamo" data-link-menu>Chi siamo</a>
-          <a class="link-menu-mobile" href="#servizi" data-link-menu>Servizi</a>
-          <a class="link-menu-mobile" href="#progetti" data-link-menu>Progetti</a>
-          <a class="link-menu-mobile" href="#contatti" data-link-menu>Contatti</a>
+          <a class="link-menu-mobile" href="#home" data-link-menu data-i18n="nav_home">Home</a>
+          <a class="link-menu-mobile" href="#chi-siamo" data-link-menu data-i18n="nav_about">Chi siamo</a>
+          <a class="link-menu-mobile" href="#servizi" data-link-menu data-i18n="nav_services">Servizi</a>
+          <a class="link-menu-mobile" href="#progetti" data-link-menu data-i18n="nav_projects">Progetti</a>
+          <a class="link-menu-mobile" href="#contatti" data-link-menu data-i18n="nav_contacts">Contatti</a>
         </nav>
 
         <div class="azioni-menu-mobile">
-          <a class="pulsante pulsante-primario pulsante-largo" href="#contatti">
+          <a class="pulsante pulsante-primario pulsante-largo" href="#contatti" data-i18n="btn_contact">
             Contattaci
           </a>
+        </div>
+
+        <div class="selettore-lingua selettore-lingua-mobile" aria-label="Selettore lingua mobile">
+          <button class="bottone-lingua attivo" type="button" data-lingua="it">IT</button>
+          <button class="bottone-lingua" type="button" data-lingua="en">EN</button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- ======================================================
-       CONTENUTO
-       ====================================================== -->
   <main>
-    
-    <!-- HERO -->
-      <section id="home" class="hero">
+    <section id="home" class="hero">
       <div class="sfondo-hero" aria-hidden="true"></div>
 
       <div class="contenitore griglia-hero">
         <div class="testo-hero apparizione">
-          <p class="occhiello">Automazione industriale · Siderurgico · Soluzioni su misura</p>
+          <p class="occhiello">
+            <br>
+            <span data-i18n="hero_eyebrow">Automazione industriale · Siderurgico · Soluzioni su misura</span>
+          </p>
 
-          <h1 class="titolo-hero">
-            Automatizziamo il futuro,<br />
+          <h1 class="titolo-hero" data-i18n-html="hero_title">
+            Automatizziamo il futuro,<br>
             ottimizziamo il presente.
           </h1>
 
-          <p class="testo-intro-hero">
-            TBtech è il partner affidabile per l’automazione industriale. Sviluppiamo soluzioni su misura per aziende che
-            vogliono innovare, crescere e rendere i propri processi più efficienti.
+          <p class="testo-intro-hero" data-i18n="hero_intro">
+            TBtech è il partner affidabile per l’automazione industriale.
+            Sviluppiamo soluzioni su misura per aziende che vogliono innovare,
+            crescere e rendere i propri processi più efficienti.
           </p>
 
           <div class="azioni-hero">
-            <a class="pulsante pulsante-primario pulsante-grande" href="#contatti">
+            <a class="pulsante pulsante-primario pulsante-grande" href="#contatti" data-i18n="hero_cta_primary">
               Richiedi una consulenza
             </a>
-            <a class="pulsante pulsante-secondario pulsante-grande" href="#progetti">
-              Vedi progetti
+            <a class="pulsante pulsante-secondario pulsante-grande" href="#servizi" data-i18n="hero_cta_secondary">
+              Scopri i servizi
             </a>
           </div>
 
           <div class="punti-forza">
             <div class="elemento-punto-forza">
               <div class="titolo-punto-forza">IEC 61131</div>
-              <div class="sotto-punto-forza">Software PLC</div>
+              <div class="sotto-punto-forza" data-i18n="proof_plc">Software PLC</div>
             </div>
+
             <div class="elemento-punto-forza">
               <div class="titolo-punto-forza">CEI 64-8</div>
-              <div class="sotto-punto-forza">Progettazione</div>
+              <div class="sotto-punto-forza" data-i18n="proof_design">Progettazione</div>
             </div>
+
             <div class="elemento-punto-forza">
-              <div class="titolo-punto-forza">Direttiva Macchine</div>
-              <div class="sotto-punto-forza">Collaudo</div>
+              <div class="titolo-punto-forza" data-i18n="proof_machinery_title">Direttiva Macchine</div>
+              <div class="sotto-punto-forza" data-i18n="proof_testing">Collaudo</div>
             </div>
           </div>
 
           <div class="riquadro-evidenza apparizione">
-            <p class="testo-secondario">
-              Utilizziamo tecnologie <strong>Beckhoff</strong>, <strong>Siemens</strong> e altri brand leader di settore per garantire la massima
-              efficienza e stabilità.
+            <p class="testo-secondario" data-i18n-html="hero_note">
+              Utilizziamo tecnologie <strong>Beckhoff</strong>,
+              <strong>Siemens</strong> e altri brand leader di settore per
+              garantire la massima efficienza e stabilità.
             </p>
           </div>
         </div>
@@ -153,210 +158,224 @@
       <div class="contenitore divisore-hero" aria-hidden="true"></div>
     </section>
 
-    <!-- CHI SIAMO -->
     <section id="chi-siamo" class="sezione">
       <div class="contenitore testa-sezione apparizione">
         <div>
-          <h2 class="titolo-sezione">Chi siamo</h2>
-          <p class="sottotitolo-sezione"><strong>Tecnologia, esperienza, passione</strong></p>
+          <h2 class="titolo-sezione" data-i18n="about_title">Chi siamo</h2>
+          <p class="sottotitolo-sezione">
+            <strong data-i18n="about_subtitle">Tecnologia, esperienza, passione</strong>
+          </p>
         </div>
       </div>
 
       <div class="contenitore griglia-due-colonne">
         <div class="scheda scheda-morbida apparizione">
-          <h3>TBtech</h3>
-          <br>
-          <p class="testo-secondario">
-            TBtech nasce dall’incontro tra
-            competenza tecnica e <br>passione per l’innovazione.<br>
-            Siamo specializzati
-            in <strong>automazione industriale</strong>, <br>
-            con un focus particolare sul settore <strong>siderurgico</strong>.
+          <h3>TBtech<br><br></h3>
+          <p class="testo-secondario" data-i18n-html="about_text">
+            TBtech nasce dall’incontro tra competenza tecnica e passione per
+            l’innovazione. Siamo specializzati in
+            <strong>automazione industriale</strong>, con un focus particolare
+            sul settore <strong>siderurgico</strong>.
           </p>
-          
-          <!--
-          <p class="testo-secondario">
-            Collaboriamo con i migliori, come <strong>Beckhoff</strong> e <strong>Siemens</strong>, per offrire ai nostri clienti
-            soluzioni sempre all’avanguardia e affidabili.
-          </p>
-          -->
         </div>
 
         <div class="scheda apparizione scheda-elevabile">
           <div class="media-scheda media-griglia" aria-hidden="true">
-             <img
-            src="card-end2end.png"
-            alt="Processo end-to-end di automazione industriale"
-            class="immagine-card-processo"
-          />
-        </div>
-          
-          <div class="corpo-scheda">
-            <h3 class="titolo-scheda">Approccio end-to-end</h3>
-            <p class="testo-scheda">
-            attenzione a qualità, sicurezza e tempi certi.
-            </p>
-            <div class="etichette">
-            <span class="etichetta">
-              <span class="punto-etichetta punto-affidabilita"></span>
-              Affidabilità
-            </span>
-
-            <span class="etichetta">
-              <span class="punto-etichetta punto-conformita"></span>
-              Conformità
-            </span>
-
-            <span class="etichetta">
-              <span class="punto-etichetta punto-performance"></span>
-              Performance
-            </span>
+            <img
+              class="immagine-card-processo"
+              src="card-end2end.png"
+              alt="Processo end-to-end di automazione industriale"
+            />
           </div>
+
+          <div class="corpo-scheda">
+            <h3 class="titolo-scheda" data-i18n="about_card_title">Approccio end-to-end</h3>
+            <p class="testo-scheda" data-i18n="about_card_text">
+              Attenzione a qualità, sicurezza e tempi certi.
+            </p>
+
+            <div class="etichette">
+              <span class="etichetta">
+                <span class="punto-etichetta punto-affidabilita"></span>
+                <span data-i18n="tag_reliability">Affidabilità</span>
+              </span>
+
+              <span class="etichetta">
+                <span class="punto-etichetta punto-conformita"></span>
+                <span data-i18n="tag_compliance">Conformità</span>
+              </span>
+
+              <span class="etichetta">
+                <span class="punto-etichetta punto-performance"></span>
+                <span data-i18n="tag_performance">Performance</span>
+              </span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SERVIZI -->
     <section id="servizi" class="sezione">
       <div class="contenitore testa-sezione apparizione">
         <div>
-          <h2 class="titolo-sezione">Servizi</h2>
-          <p class="sottotitolo-sezione">Soluzioni tecniche conformi, robuste e scalabili</p>
+          <h2 class="titolo-sezione" data-i18n="services_title">Servizi</h2>
+          <p class="sottotitolo-sezione" data-i18n="services_subtitle">
+            Soluzioni tecniche conformi, robuste e scalabili
+          </p>
         </div>
       </div>
 
       <div class="contenitore griglia-servizi">
         <article class="servizio apparizione">
           <div class="icona-servizio" aria-hidden="true">PLC</div>
-          <h3>Software custom</h3>
-          <p class="testo-secondario"><strong>Compliant con la norma IEC 61131</strong></p>
+          <h3 data-i18n="service_1_title">Software custom</h3>
           <p class="testo-secondario">
-            Sviluppiamo software personalizzati per l’automazione industriale, seguendo le normative di riferimento e
-            garantendo affidabilità e sicurezza.
+            <strong data-i18n="service_1_norm">Compliant con la norma IEC 61131</strong>
+          </p>
+          <p class="testo-secondario" data-i18n="service_1_text">
+            Sviluppiamo software personalizzati per l’automazione industriale,
+            seguendo le normative di riferimento e garantendo affidabilità e
+            sicurezza.
           </p>
         </article>
 
         <article class="servizio apparizione">
           <div class="icona-servizio" aria-hidden="true">EL</div>
-          <h3>Progettazione elettrica</h3>
-          <p class="testo-secondario"><strong>Compliant con la norma CEI 64-8</strong></p>
+          <h3 data-i18n="service_2_title">Progettazione elettrica</h3>
           <p class="testo-secondario">
-            Progettiamo sistemi elettrici conformi agli standard internazionali e alle normative di settore.
+            <strong data-i18n="service_2_norm">Compliant con la norma CEI 64-8</strong>
+          </p>
+          <p class="testo-secondario" data-i18n="service_2_text">
+            Progettiamo sistemi elettrici conformi agli standard internazionali
+            e alle normative di settore.
           </p>
         </article>
 
         <article class="servizio apparizione">
           <div class="icona-servizio" aria-hidden="true">CONS</div>
-          <h3>Consulenza</h3>
-          <p class="testo-secondario">
-            Offriamo consulenza tecnica per aiutare le aziende a scegliere e implementare le migliori soluzioni
-            di automazione, sempre in linea con le normative vigenti.
+          <h3 data-i18n="service_3_title">Consulenza</h3>
+          <p class="testo-secondario" data-i18n="service_3_text">
+            Offriamo consulenza tecnica per aiutare le aziende a scegliere e
+            implementare le migliori soluzioni di automazione, sempre in linea
+            con le normative vigenti.
           </p>
         </article>
 
         <article class="servizio apparizione">
           <div class="icona-servizio" aria-hidden="true">QA</div>
-          <h3>Collaudo e messa in servizio</h3>
-          <p class="testo-secondario">
-            Seguiamo ogni fase dell’avviamento degli impianti, garantendo risultati concreti, tempi certi e piena
-            conformità alla Direttiva Macchine, offrendo service post collaudo.
+          <h3 data-i18n="service_4_title">Collaudo e messa in servizio</h3>
+          <p class="testo-secondario" data-i18n="service_4_text">
+            Seguiamo ogni fase dell’avviamento degli impianti, garantendo
+            risultati concreti, tempi certi e piena conformità alla Direttiva
+            Macchine, offrendo service post collaudo.
           </p>
         </article>
       </div>
     </section>
 
-<!-- PROGETTI -->
-<section id="progetti" class="sezione">
-  <div class="contenitore">
-    <div class="scheda-mappa apparizione scheda-elevabile" style="max-width:900px; margin:0 auto;">
-      <div class="testa-mappa">
-        <h3 class="titolo-mappa">Le nostre connessioni globali</h3>
-      </div>
+    <section id="progetti" class="sezione">
+      <div class="contenitore">
+        <div class="scheda-mappa apparizione scheda-elevabile">
+          <div class="testa-mappa">
+            <h3 class="titolo-mappa" data-i18n="projects_title">Le nostre connessioni globali</h3>
+          </div>
 
-      <div id="globo-3d"></div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTATTI -->
-<section id="contatti" class="sezione">
-  <div class="contenitore griglia-contatti">
-    <div class="scheda apparizione scheda-elevabile">
-      <h3 class="titolo-sezione">Contatti</h3>
-
-      <div class="lista-contatti">
-        <div class="elemento-contatto">
-          <div class="etichetta-contatto">Email</div>
-          <a class="valore-contatto" href="mailto:info@tbtech.it">info@tbtech.it</a>
-        </div>
-
-        <div class="elemento-contatto">
-          <div class="etichetta-contatto">Telefono</div>
-          <a class="valore-contatto" href="tel:+393930194938">+39 393 019 4938</a>
-        </div>
-
-        <div class="elemento-contatto">
-          <div class="etichetta-contatto">Sede</div>
-          <div class="valore-contatto">Udine, Italia</div>
+          <div id="globo-3d"></div>
         </div>
       </div>
+    </section>
 
-      <!--
-      <div class="nota">
-        <p class="testo-secondario">
-          Se vuoi, posso aggiungere un form che invia via API (o EmailJS) quando avrai un endpoint.
-        </p>
+    <section id="contatti" class="sezione">
+      <div class="contenitore griglia-contatti">
+        <div class="scheda apparizione scheda-elevabile">
+          <h3 class="titolo-sezione" data-i18n="contacts_title">Contatti</h3>
+
+          <div class="lista-contatti">
+            <div class="elemento-contatto">
+              <div class="etichetta-contatto">Email</div>
+              <a class="valore-contatto" href="mailto:info@tbtech.it">
+                info@tbtech.it
+              </a>
+            </div>
+
+            <div class="elemento-contatto">
+              <div class="etichetta-contatto" data-i18n="contact_phone">Telefono</div>
+              <a class="valore-contatto" href="tel:+393930194938">
+                +39 393 019 4938
+              </a>
+            </div>
+
+            <div class="elemento-contatto">
+              <div class="etichetta-contatto" data-i18n="contact_location">Sede</div>
+              <div class="valore-contatto" data-i18n="contact_place">Udine, Italia</div>
+            </div>
+          </div>
+        </div>
+
+        <form
+          name="contatti"
+          method="POST"
+          action="/conferma.html"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          class="scheda scheda-morbida form-contatti apparizione scheda-elevabile"
+          data-form-contatti
+        >
+          <input type="hidden" name="form-name" value="contatti" />
+
+          <p class="visually-hidden">
+            <label>
+              Non compilare questo campo:
+              <input name="bot-field" type="text" />
+            </label>
+          </p>
+
+          <h3 data-i18n="form_title">Scrivici</h3>
+
+          <label class="campo-form">
+            <span data-i18n="form_name">Nome</span>
+            <input class="campo-input campo-pieno" name="name" required />
+          </label>
+
+          <label class="campo-form">
+            <span>Email</span>
+            <input
+              class="campo-input campo-pieno"
+              type="email"
+              name="email"
+              required
+            />
+          </label>
+
+          <label class="campo-form">
+            <span data-i18n="form_message">Messaggio</span>
+            <textarea
+              class="campo-input campo-pieno"
+              name="message"
+              rows="5"
+              required
+            ></textarea>
+          </label>
+
+          <button class="pulsante pulsante-primario" type="submit" data-i18n="form_submit">
+            Invia
+          </button>
+
+          <p class="testo-secondario" data-i18n-html="form_privacy">
+            I dati inviati verranno utilizzati esclusivamente per rispondere
+            alla richiesta.
+            <a href="privacy.html">Leggi l'informativa privacy</a>.
+          </p>
+
+          <p
+            class="testo-secondario stato-form"
+            data-stato-form
+            aria-live="polite"
+          ></p>
+        </form>
       </div>
-      -->
-    </div>
+    </section>
 
-  <form
-    name="contatti"
-    method="POST"
-    action="/conferma.html"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-    class="scheda scheda-morbida form-contatti apparizione scheda-elevabile"
-    data-form-contatti
-  >
-    <input type="hidden" name="form-name" value="contatti" />
-
-    <p class="visually-hidden">
-      <label>
-        Non compilare questo campo:
-        <input name="bot-field" type="text" />
-      </label>
-    </p>
-  <h3>Scrivici</h3>
-
-      <label class="campo-form">
-        <span>Nome</span>
-        <input class="campo-input campo-pieno" name="name" required />
-      </label>
-
-      <label class="campo-form">
-        <span>Email</span>
-        <input class="campo-input campo-pieno" type="email" name="email" required />
-      </label>
-
-      <label class="campo-form">
-        <span>Messaggio</span>
-        <textarea class="campo-input campo-pieno" name="message" rows="5" required></textarea>
-      </label>
-
-      <button class="pulsante pulsante-primario" type="submit">Invia</button>
-      <p class="testo-secondario">
-      I dati inviati verranno utilizzati esclusivamente per rispondere alla richiesta.
-      <a href="privacy.html">Leggi l'informativa privacy</a>.
-</p>
-      <p class="testo-secondario stato-form" data-stato-form aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-    <!-- FOOTER -->
     <footer class="piè-di-pagina">
       <div class="contenitore interno-footer">
         <div class="sinistra-footer">
@@ -364,23 +383,28 @@
             <span class="segno-marchio" aria-hidden="true"></span>
             <span class="nome-marchio">TBtech</span>
           </div>
-          <p class="testo-secondario">TBTECH DI THOMAS BORTOLIN & C. S.A.S </p>
+
+          <p class="testo-secondario">TBTECH DI THOMAS BORTOLIN &amp; C. S.A.S</p>
           <p class="testo-secondario">Via Paparotti 13, 33100 Udine</p>
           <p class="testo-secondario">P.IVA e C.F. 03165130307 – REA UD – 375031</p>
-          <p class="testo-secondario">© <span data-anno></span> TBtech. Tutti i diritti riservati.</p>
+          <p class="testo-secondario">
+            © <span data-anno></span> TBtech. <span data-i18n="footer_rights">Tutti i diritti riservati.</span>
+          </p>
+
           <a class="link-footer" href="privacy.html">Privacy Policy</a>
         </div>
 
         <div class="destra-footer">
-          <a class="link-footer" href="#home">Home</a>
-          <a class="link-footer" href="#servizi">Servizi</a>
-          <a class="link-footer" href="#contatti">Contatti</a>
+          <a class="link-footer" href="#home" data-i18n="nav_home">Home</a>
+          <a class="link-footer" href="#servizi" data-i18n="nav_services">Servizi</a>
+          <a class="link-footer" href="#contatti" data-i18n="nav_contacts">Contatti</a>
         </div>
       </div>
     </footer>
   </main>
-<script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
-<script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
-<script src="app.js"></script>
+
+  <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+  <script src="https://unpkg.com/globe.gl@2.32.1/dist/globe.gl.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

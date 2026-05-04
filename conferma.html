@@ -2,21 +2,35 @@
 <html lang="it">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>Messaggio inviato – TBtech</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <main class="sezione">
-    <div class="contenitore" style="max-width: 760px; text-align: center;">
-      <h1 class="titolo-sezione">Messaggio inviato</h1>
-      <p class="testo-secondario">
+    <div class="contenitore pagina-conferma">
+      <div class="selettore-lingua selettore-lingua-pagina">
+        <button class="bottone-lingua attivo" type="button" data-lingua="it">IT</button>
+        <button class="bottone-lingua" type="button" data-lingua="en">EN</button>
+      </div>
+
+      <h1 class="titolo-sezione" data-i18n="confirm_title">Messaggio inviato</h1>
+
+      <p class="testo-secondario" data-i18n="confirm_text">
         Abbiamo ricevuto la tua richiesta e ti risponderemo il prima possibile.
       </p>
-      <p style="margin-top: 24px;">
-        <a class="pulsante pulsante-primario" href="/index.html">Torna al sito</a>
+
+      <p class="spazio-alto">
+        <a class="pulsante pulsante-primario" href="/index.html" data-i18n="confirm_back">
+          Torna al sito
+        </a>
       </p>
     </div>
   </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
