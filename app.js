@@ -26,7 +26,7 @@ const traduzioni = {
     btn_services: "Scopri i servizi",
     btn_contact: "Contattaci",
 
-    hero_eyebrow: "Automazione industriale · Siderurgico · Soluzioni su misura",
+    hero_eyebrow: "Automazione industriale · Robotica · Soluzioni su misura",
     hero_title: "Automatizziamo il futuro,<br />ottimizziamo il presente.",
     hero_intro:
       "TBtech è il partner affidabile per l’automazione industriale. Sviluppiamo soluzioni su misura per aziende che vogliono innovare, crescere e rendere i propri processi più efficienti.",
@@ -77,7 +77,7 @@ const traduzioni = {
     contacts_title: "Contatti",
     contact_phone: "Telefono",
     contact_location: "Sede",
-    contact_place: "Udine, Italia",
+    contact_place: "Via Paparotti 13, Udine, Italia",
 
     form_title: "Scrivici",
     form_name: "Nome",
@@ -164,7 +164,7 @@ const traduzioni = {
     btn_services: "Services",
     btn_contact: "Contact us",
 
-    hero_eyebrow: "Industrial automation · Steel industry · Tailored solutions",
+    hero_eyebrow: "Industrial automation · Robotics · Tailored solutions",
     hero_title: "We automate the future,<br />and optimize the present.",
     hero_intro:
       "TBtech delivers tailored industrial automation solutions for efficient, reliable and scalable processes.",
@@ -214,10 +214,10 @@ const traduzioni = {
 
     contacts_title: "Contact",
     contact_phone: "Phone",
-    contact_location: "Location",
-    contact_place: "Udine, Italy",
+    contact_location: "Address",
+    contact_place: "Via Paparotti 13, Udine, Italy",
 
-    form_title: "Write to us",
+    form_title: "Get in touch",
     form_name: "Name",
     form_message: "Message",
     form_submit: "Send",

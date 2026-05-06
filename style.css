@@ -827,6 +827,12 @@ textarea.campo-input {
     box-shadow 0.25s ease;
 }
 
+.icona-servizio img{
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
 .servizio:hover .icona-servizio {
   box-shadow: 0 10px 18px rgba(47, 107, 255, 0.18);
   transform: scale(1.04);
