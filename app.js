@@ -42,9 +42,10 @@ const traduzioni = {
 
     about_title: "Chi siamo",
     about_subtitle: "Tecnologia, esperienza, passione",
+    about_card_title:"Automazione industriale su misura",
     about_text:
       "TBtech nasce dall’incontro tra competenza tecnica e passione per l’innovazione. Siamo specializzati in <strong>automazione industriale</strong>, con un focus particolare sul settore <strong>siderurgico</strong>.",
-    about_card_title: "Approccio end-to-end",
+    about_card_title2: "Approccio end-to-end",
     about_card_text: "Attenzione a qualità, sicurezza e tempi certi.",
 
     tag_reliability: "Affidabilità",
@@ -180,9 +181,10 @@ const traduzioni = {
 
     about_title: "About us",
     about_subtitle: "Technology, experience, passion",
+    about_card_title:"Tailor-made industrial automation",
     about_text:
       "TBtech combines technical expertise with a strong focus on innovation. We specialize in <strong>industrial automation</strong>, especially for the <strong>steel industry</strong>.",
-    about_card_title: "End-to-end approach",
+    about_card_title2: "End-to-end approach",
     about_card_text: "Quality, safety and reliable timing.",
 
     tag_reliability: "Reliability",
@@ -439,22 +441,28 @@ function scrollVersoSezione(link, evento) {
   if (!sezione) return;
 
   evento.preventDefault();
+
+  const testataInterna = seleziona(".testata-interna");
+  const altezzaHeader = testataInterna?.offsetHeight || 88;
+
   chiudiMenu();
 
-  const altezzaTestata = testata?.offsetHeight || 0;
-  const posizioneSezione = sezione.getBoundingClientRect().top + window.scrollY;
+  setTimeout(() => {
+    const posizioneSezione =
+      sezione.getBoundingClientRect().top + window.scrollY;
 
-  const posizioneFinale =
-    destinazione === "#progetti"
-      ? posizioneSezione - window.innerHeight / 2 + sezione.offsetHeight / 2
-      : posizioneSezione - altezzaTestata - 10;
+    const posizioneFinale =
+      destinazione === "#progetti"
+        ? posizioneSezione - altezzaHeader - 10
+        : posizioneSezione - altezzaHeader - 10;
 
-  evidenziaLink(sezione.id);
+    evidenziaLink(sezione.id);
 
-  window.scrollTo({
-    top: Math.max(posizioneFinale, 0),
-    behavior: "smooth",
-  });
+    window.scrollTo({
+      top: Math.max(posizioneFinale, 0),
+      behavior: "smooth",
+    });
+  }, 80);
 }
 
 window.addEventListener("scroll", aggiornaLinkAttivo);
@@ -625,7 +633,7 @@ function avviaGlobo() {
     .ringRepeatPeriod(2600);
 
   globo.controls().autoRotate = true;
-  globo.controls().autoRotateSpeed = 0.22;
+  globo.controls().autoRotateSpeed = 1.22;
 
   globo.pointOfView(
     {

@@ -30,13 +30,6 @@
         <a class="link-menu" href="#contatti" data-link-menu data-i18n="nav_contacts">Contatti</a>
       </nav>
 
-      <!--
-      <div class="azioni-testata">
-        <a class="pulsante pulsante-secondario" href="#contatti" data-i18n="btn_talk">Parliamone</a>
-        <a class="pulsante pulsante-primario" href="#servizi" data-i18n="btn_services">Scopri i servizi</a>
-      </div>
-      -->
-      
       <div class="selettore-lingua" aria-label="Selettore lingua">
         <button class="bottone-lingua attivo" type="button" data-lingua="it">IT</button>
         <button class="bottone-lingua" type="button" data-lingua="en">EN</button>
@@ -57,7 +50,6 @@
         </span>
       </button>
     </div>
-    
 
     <div
       id="menu-mobile"
@@ -95,12 +87,12 @@
       <div class="contenitore griglia-hero">
         <div class="testo-hero apparizione">
           <p class="occhiello">
-            <br>
+            <br />
             <span data-i18n="hero_eyebrow">Automazione industriale · Robotica · Soluzioni su misura</span>
           </p>
 
           <h1 class="titolo-hero" data-i18n-html="hero_title">
-            Automatizziamo il futuro,<br>
+            Automatizziamo il futuro,<br />
             ottimizziamo il presente.
           </h1>
 
@@ -169,27 +161,25 @@
       </div>
 
       <div class="contenitore griglia-due-colonne">
-        <div class="scheda scheda-morbida apparizione">
-          <h3>TBtech<br><br></h3>
-          <p class="testo-secondario" data-i18n-html="about_text">
-            TBtech nasce dall’incontro tra competenza tecnica e passione per
-            l’innovazione. Siamo specializzati in
-            <strong>automazione industriale</strong>, con un focus particolare
-            sul settore <strong>siderurgico</strong>.
-          </p>
-        </div>
+        <div class="scheda scheda-morbida apparizione scheda-about scheda-elevabile">
+          <div class="contenuto-about-principale">
+            <h3 class="titolo-scheda" data-i18n="about_card_title">
+              Automazione industriale su misura
+            </h3>
 
-        <div class="scheda apparizione scheda-elevabile">
-          <div class="media-scheda media-griglia" aria-hidden="true">
-            <img
-              class="immagine-card-processo"
-              src="card-end2end.png"
-              alt="Processo end-to-end di automazione industriale"
-            />
+            <p class="testo-secondario" data-i18n-html="about_text">
+              TBtech nasce dall’incontro tra competenza tecnica e passione per
+              l’innovazione. Siamo specializzati in
+              <strong>automazione industriale</strong>, con un focus particolare
+              sul settore <strong>siderurgico</strong>.
+            </p>
           </div>
 
-          <div class="corpo-scheda">
-            <h3 class="titolo-scheda" data-i18n="about_card_title">Approccio end-to-end</h3>
+          <div class="contenuto-about-approccio">
+            <h3 class="titolo-scheda2" data-i18n="about_card_title2">
+              Approccio end-to-end
+            </h3>
+
             <p class="testo-scheda" data-i18n="about_card_text">
               Attenzione a qualità, sicurezza e tempi certi.
             </p>
@@ -212,6 +202,16 @@
             </div>
           </div>
         </div>
+
+        <div class="scheda apparizione scheda-elevabile scheda-processo">
+          <div class="media-scheda media-griglia" aria-hidden="true">
+            <img
+              class="immagine-card-processo"
+              src="card-end2end.png"
+              alt="Processo end-to-end di automazione industriale"
+            />
+          </div>
+        </div>
       </div>
     </section>
 
@@ -228,12 +228,15 @@
       <div class="contenitore griglia-servizi">
         <article class="servizio apparizione">
           <div class="icona-servizio" aria-hidden="true">
-            <img src="https://img.icons8.com/?size=100&id=2778&format=png&color=FFFFFF" alt="PLC">
+            <img src="https://img.icons8.com/?size=100&id=2778&format=png&color=FFFFFF" alt="PLC" />
           </div>
+
           <h3 data-i18n="service_1_title">Software custom</h3>
+
           <p class="testo-secondario">
             <strong data-i18n="service_1_norm">Compliant con la norma IEC 61131</strong>
           </p>
+
           <p class="testo-secondario" data-i18n="service_1_text">
             Sviluppiamo software personalizzati per l’automazione industriale,
             seguendo le normative di riferimento e garantendo affidabilità e
@@ -243,12 +246,15 @@
 
         <article class="servizio apparizione">
           <div class="icona-servizio" aria-hidden="true">
-            <img src="https://img.icons8.com/?size=100&id=2357&format=png&color=FFFFFF" alt="EL">
+            <img src="https://img.icons8.com/?size=100&id=2357&format=png&color=FFFFFF" alt="EL" />
           </div>
+
           <h3 data-i18n="service_2_title">Progettazione elettrica</h3>
+
           <p class="testo-secondario">
             <strong data-i18n="service_2_norm">Compliant con la norma CEI 64-8</strong>
           </p>
+
           <p class="testo-secondario" data-i18n="service_2_text">
             Progettiamo sistemi elettrici conformi agli standard internazionali
             e alle normative di settore.
@@ -257,9 +263,11 @@
 
         <article class="servizio apparizione">
           <div class="icona-servizio" aria-hidden="true">
-            <img src="https://img.icons8.com/?size=100&id=52230&format=png&color=FFFFFF" alt="CONS">
+            <img src="https://img.icons8.com/?size=100&id=52230&format=png&color=FFFFFF" alt="CONS" />
           </div>
+
           <h3 data-i18n="service_3_title">Consulenza</h3>
+
           <p class="testo-secondario" data-i18n="service_3_text">
             Offriamo consulenza tecnica per aiutare le aziende a scegliere e
             implementare le migliori soluzioni di automazione, sempre in linea
@@ -269,9 +277,11 @@
 
         <article class="servizio apparizione">
           <div class="icona-servizio" aria-hidden="true">
-            <img src="https://img.icons8.com/?size=100&id=30379&format=png&color=FFFFFF" alt="QA">
+            <img src="https://img.icons8.com/?size=100&id=30379&format=png&color=FFFFFF" alt="QA" />
           </div>
+
           <h3 data-i18n="service_4_title">Collaudo e messa in servizio</h3>
+
           <p class="testo-secondario" data-i18n="service_4_text">
             Seguiamo ogni fase dell’avviamento degli impianti, garantendo
             risultati concreti, tempi certi e piena conformità alla Direttiva
@@ -308,16 +318,16 @@
 
             <div class="elemento-contatto">
               <div class="etichetta-contatto" data-i18n="contact_phone">Telefono</div>
-              <a class="valore-contatto" href="tel:+393930194938">
+              <a class="valore-contatto" href="tel:+390432280243">
                 +39 043 228 0243
               </a>
             </div>
 
             <div class="elemento-contatto">
               <div class="etichetta-contatto" data-i18n="contact_location">Sede</div>
-              <a class="valore-contatto" href="https://maps.app.goo.gl/45Kis66VVtKm14rE7">
-                <div class="valore-contatto" data-i18n="contact_place">Via Paparotti 13, Udine, Italia</div>
-            </a>
+              <a class="valore-contatto" href="https://maps.app.goo.gl/45Kis66VVtKm14rE7" target="_blank" rel="noopener">
+                <span data-i18n="contact_place">Via Paparotti 13, Udine, Italia</span>
+              </a>
             </div>
           </div>
         </div>
@@ -392,7 +402,7 @@
           <div class="marchio marchio-footer">
             <span class="segno-marchio" aria-hidden="true"></span>
             <span class="nome-marchio">
-              <img class="logo-marchio" src="miniLogo.png" alt="TBtech Logo" />
+              <img class="logo-marchio logo-footer" src="miniLogo.png" alt="TBtech Logo" />
             </span>
           </div>
 
@@ -400,7 +410,8 @@
           <p class="testo-secondario">Via Paparotti 13, 33100 Udine</p>
           <p class="testo-secondario">P.IVA e C.F. 03165130307 – REA UD – 375031</p>
           <p class="testo-secondario">
-            © <span data-anno></span> TBtech. <span data-i18n="footer_rights">Tutti i diritti riservati.</span>
+            © <span data-anno></span> TBtech.
+            <span data-i18n="footer_rights">Tutti i diritti riservati.</span>
           </p>
 
           <a class="link-footer" href="privacy.html">Privacy Policy</a>
